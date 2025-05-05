@@ -9,6 +9,14 @@ public class RegistrationPage {
 
     private WebDriver driver;
 
+    public By getFirstNameLocator() {
+        return firstNameLocator;
+    }
+
+    public By getLastNameLocator() {
+        return lastNameLocator;
+    }
+
     private By firstNameLocator = By.xpath("//input[@name='firstName']");
     private By lastNameLocator = By.xpath("//input[@name='lastName']");
     private By dateOfBirthLocator = By.xpath("//input[@name='dateOfBirth']");

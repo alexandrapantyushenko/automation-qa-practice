@@ -9,7 +9,6 @@ import pages.SignInPage;
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RegistrationTest extends BaseTest{
 
