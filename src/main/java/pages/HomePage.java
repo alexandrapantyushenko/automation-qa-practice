@@ -19,4 +19,12 @@ public class HomePage {
     public WebElement getSignOutButton() {
         return driver.findElement(By.xpath("//div[contains(text(),'Sign Out')]"));
     }
+
+    public HomePage clickUploadButton() {
+        WebElement uploadButton = driver.findElement(By.xpath("//img[@class='w-[95px]']"));
+        uploadButton.click();
+        return new HomePage(driver);
+    }
+
+
 }
