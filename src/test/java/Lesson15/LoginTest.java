@@ -1,3 +1,5 @@
+package Lesson15;
+
 import components.AndersenUrls;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;

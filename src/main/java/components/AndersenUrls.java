@@ -11,7 +11,7 @@ public enum AndersenUrls {
         this.url = url;
     }
 
-    public String getUrl(){
+    public String getUrl() {
         return url;
     }
 }

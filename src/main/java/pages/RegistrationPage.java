@@ -38,11 +38,11 @@ public class RegistrationPage {
         element.sendKeys(Keys.ESCAPE);
     }
 
-    private void click(By locator){
+    private void click(By locator) {
         driver.findElement(locator).click();
     }
 
-       public RegistrationPage insertNewAccountData(String firstName, String lastName, String dateOfBirth, String email, String password, String passwordConfirmation) {
+    public RegistrationPage insertNewAccountData(String firstName, String lastName, String dateOfBirth, String email, String password, String passwordConfirmation) {
         setValue(firstNameLocator, firstName);
         setValue(lastNameLocator, lastName);
         setValue(dateOfBirthLocator, dateOfBirth);
@@ -53,7 +53,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public SignInPage clickSubmit(){
+    public SignInPage clickSubmit() {
         click(submitBtnLocator);
         return new SignInPage(driver);
     }

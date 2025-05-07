@@ -16,7 +16,7 @@ public class SignInPage {
         this.driver = driver;
     }
 
-    public SignInPage navigateTo(String url){
+    public SignInPage navigateTo(String url) {
         driver.get(url);
         return this;
     }
@@ -32,9 +32,9 @@ public class SignInPage {
         return new HomePage(driver);
     }
 
-    public RegistrationPage clickRegistrationBtn(){
+    public RegistrationPage clickRegistrationBtn() {
         driver.findElement(registrationBtn).click();
-        return new RegistrationPage (driver);
+        return new RegistrationPage(driver);
     }
 }
 

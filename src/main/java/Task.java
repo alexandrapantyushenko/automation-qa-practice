@@ -1,6 +1,6 @@
 public class Task {
 
-    void task(){
+    void task() {
         /*
         1. Automate two test cases from each module that you wrote for the previous homework.
 

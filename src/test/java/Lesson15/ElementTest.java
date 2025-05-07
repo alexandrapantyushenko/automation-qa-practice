@@ -1,4 +1,7 @@
+package Lesson15;
+
 import components.AndersenUrls;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.junit.jupiter.api.Test;
@@ -13,6 +16,6 @@ public class ElementTest extends BaseTest {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         WebElement firstNameElement = driver.findElement(registrationPage.getFirstNameLocator());
         WebElement lastNameElement = driver.findElement(registrationPage.getLastNameLocator());
-        ElementUtils.compareElements(firstNameElement, lastNameElement);
+        Assertions.assertEquals(firstNameElement, lastNameElement);
     }
 }
