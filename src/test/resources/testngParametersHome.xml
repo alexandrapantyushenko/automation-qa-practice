@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="LoginUsersSuite" parallel="false">
+    <test name="LoginUser1">
+        <parameter name="email" value="emily.johnson57@example.com"/>
+        <parameter name="password" value="EmilyPass123!"/>
+        <classes>
+            <class name="Lesson16.parameters.loginWithParametersTest"/>
+        </classes>
+    </test>
+
+    <test name="LoginUser2">
+        <parameter name="email" value="emily.johnson89@example.com"/>
+        <parameter name="password" value="EmilyPass123!"/>
+        <classes>
+            <class name="Lesson16.parameters.loginWithParametersTest"/>
+        </classes>
+    </test>
+
+    <test name="LoginUser3">
+        <parameter name="email" value="emily.johnson55@example.com"/>
+        <parameter name="password" value="EmilyPass123!"/>
+        <classes>
+            <class name="Lesson16.parameters.loginWithParametersTest"/>
+        </classes>
+    </test>
+</suite>
