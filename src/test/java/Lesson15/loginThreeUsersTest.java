@@ -14,7 +14,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LoginTest extends BaseTest {
+public class loginThreeUsersTest extends BaseTest {
 
     @Test
     void userLogin() {

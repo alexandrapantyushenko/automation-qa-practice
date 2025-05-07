@@ -11,25 +11,25 @@ public class ParallelClass2 {
     }
 
     @Test
-    public void parallel7() throws InterruptedException{
+    public void parallel7() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }
 
     @Test
-    public void parallel8() throws InterruptedException{
+    public void parallel8() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }
 
     @Test
-    public void parallel9() throws InterruptedException{
+    public void parallel9() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }
 
     @Test
-    public void parallel10() throws InterruptedException{
+    public void parallel10() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }

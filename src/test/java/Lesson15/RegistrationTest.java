@@ -24,7 +24,7 @@ public class RegistrationTest extends BaseTest {
                 .insertNewAccountData("Emily",
                         "Johnson",
                         "08/22/1995",
-                        "emily.johnson57@example.com",
+                        "emily.johnson55@example.com",
                         "EmilyPass123!",
                         "EmilyPass123!")
                 .clickSubmit();

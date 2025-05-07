@@ -10,30 +10,37 @@ public class PriorityTestJUnit {
 
     @Test
     @Order(1)
-    public void g(){}
+    public void g() {
+    }
 
     @Test
     @Order(2)
-    public void f(){}
+    public void f() {
+    }
 
     @Test
     @Order(3)
-    public void e(){}
+    public void e() {
+    }
 
     @Test
     @Order(4)
-    public void d(){}
+    public void d() {
+    }
 
     @Test
     @Order(5)
-    public void c(){}
+    public void c() {
+    }
 
     @Test
     @Order(6)
-    public void b(){}
+    public void b() {
+    }
 
     @Test
     @Order(7)
-    public void a(){}
+    public void a() {
+    }
 
 }
