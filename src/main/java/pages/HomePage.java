@@ -1,9 +1,12 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -15,7 +18,7 @@ public class HomePage {
         this.driver = driver;
     }
 
-    private By aqaPracticeButton = By.xpath("//div[text()='AQA Practice']/..");
+    private By aqaPracticeButton = By.xpath("//div[@class='my-auto']");
     private By selectOption = By.xpath("//div[text()='Select']");
 
     private By signOutButton = By.xpath("//div[contains(text(),'Sign Out')]");
@@ -23,16 +26,24 @@ public class HomePage {
 
 
     public SelectPage hoverAndClickSelect(){
-        Actions actions = new Actions(driver);
+        //Actions actions = new Actions(driver);
 
-        WebElement menu = driver.findElement(aqaPracticeButton);
-        WebElement select = driver.findElement(selectOption);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement menu = wait.until(ExpectedConditions.visibilityOfElementLocated(aqaPracticeButton));
 
-        actions.moveToElement(menu)
-                .pause(Duration.ofMillis(500))
-                .click(select)
-                .build()
-                .perform();
+
+
+       // WebElement select = driver.findElement(selectOption);
+
+
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", menu);
+
+//        actions.moveToElement(menu)
+//                .click(menu)
+//                .pause(Duration.ofSeconds(10))
+//                .click(driver.findElement(selectOption))
+//                .build()
+//                .perform();
 
         return new SelectPage(driver);
     }
