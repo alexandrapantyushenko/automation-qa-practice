@@ -17,15 +17,13 @@ public class SelectPage {
     }
 
     private By countrySelect = By.xpath("//select[@title='Select country']");
-    //private By USASelect = By.xpath("//select[@title='Select country']/option[text()='USA']");
     private By languageSelect = By.xpath("//select[@title='Select language']");
-    // private By englishSelect = By.xpath("//select[@title='Select language']/option[text()='English']");
-    private By typeSelect = By.xpath("/select[@title='Select type']");
+    private By typeSelect = By.xpath("//select[@title='Select type']");
     private By startDateInput = By.xpath("//input[@title = 'Start date']");
     private By endDateInput = By.xpath("//input[@title = 'End date']");
     private By coursesSelect = By.xpath("//select[@id='MultipleSelect']");
-    private By submitButton = By.xpath("");
-    private By errorMessage = By.xpath("");
+    private By searchButton = By.xpath("//button[@type='submit']");
+   // private By errorMessage = By.xpath("");
 
     public SelectPage selectCountry(String country) {
         WebElement countryDropdown = driver.findElement(countrySelect);
@@ -68,7 +66,6 @@ public class SelectPage {
         return this;
     }
 
-
     public SelectPage selectCourse(String course1, String course2) {
         WebElement coursesDropdown = driver.findElement(coursesSelect);
         Select select = new Select(coursesDropdown);
@@ -76,6 +73,12 @@ public class SelectPage {
         select.selectByVisibleText(course1);
         select.selectByVisibleText(course2);
         return this;
+    }
+
+    public SearchResultsPage clickSearchButton(){
+        WebElement searchBtn = driver.findElement(searchButton);
+        searchBtn.click();
+        return new SearchResultsPage(driver);
     }
 }
 

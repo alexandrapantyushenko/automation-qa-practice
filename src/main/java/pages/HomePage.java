@@ -25,25 +25,16 @@ public class HomePage {
     private By emailBlock = By.xpath("//div[contains(text(),'Sign Out')]");
 
 
-    public SelectPage hoverAndClickSelect(){
-        //Actions actions = new Actions(driver);
-
+    public SelectPage hoverAndClickSelect() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement menu = wait.until(ExpectedConditions.visibilityOfElementLocated(aqaPracticeButton));
 
+        WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(aqaPracticeButton));
 
+        Actions actions = new Actions(driver);
+        actions.moveToElement(menuButton).perform();
 
-       // WebElement select = driver.findElement(selectOption);
-
-
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", menu);
-
-//        actions.moveToElement(menu)
-//                .click(menu)
-//                .pause(Duration.ofSeconds(10))
-//                .click(driver.findElement(selectOption))
-//                .build()
-//                .perform();
+        WebElement selectOptionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(selectOption));
+        selectOptionButton.click();
 
         return new SelectPage(driver);
     }
