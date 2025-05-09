@@ -23,7 +23,6 @@ public class SelectPage {
     private By endDateInput = By.xpath("//input[@title = 'End date']");
     private By coursesSelect = By.xpath("//select[@id='MultipleSelect']");
     private By searchButton = By.xpath("//button[@type='submit']");
-   // private By errorMessage = By.xpath("");
 
     public SelectPage selectCountry(String country) {
         WebElement countryDropdown = driver.findElement(countrySelect);

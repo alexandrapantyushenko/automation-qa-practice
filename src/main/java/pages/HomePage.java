@@ -19,24 +19,41 @@ public class HomePage {
     }
 
     private By aqaPracticeButton = By.xpath("//div[@class='my-auto']");
+
     private By selectOption = By.xpath("//div[text()='Select']");
 
     private By signOutButton = By.xpath("//div[contains(text(),'Sign Out')]");
     private By emailBlock = By.xpath("//div[contains(text(),'Sign Out')]");
 
 
-    public SelectPage hoverAndClickSelect() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public HomePage hoverMenu() {
 
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(aqaPracticeButton));
 
         Actions actions = new Actions(driver);
         actions.moveToElement(menuButton).perform();
 
-        WebElement selectOptionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(selectOption));
+        return this;
+    }
+
+
+    public Object clickOption(String menuOption){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement selectOptionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='" + menuOption + "']")));
         selectOptionButton.click();
 
-        return new SelectPage(driver);
+        switch (menuOption) {
+            case "Select":
+                return new SelectPage(driver); // Переход на SelectPage
+            case "Drag & Drop":
+                return new DragAndDropPage(driver); // Переход на HomePage
+//            case "Actions, Alerts & Iframes":
+//                return new
+            default:
+                throw new IllegalArgumentException("Invalid menu option: " + menuOption);
+        }
     }
 
     public WebElement getEmailElement(String email) {

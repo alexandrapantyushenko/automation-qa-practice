@@ -18,7 +18,8 @@ public class SelectPageTest extends BaseTest {
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
                 .clickLogin()
-                .hoverAndClickSelect()
+                .hoverMenu()
+                .clickOption("Select")
                 .selectCountry("USA")
                 .selectLanguage("English")
                 .selectType("Testing")
@@ -28,6 +29,6 @@ public class SelectPageTest extends BaseTest {
                 .clickSearchButton()
                 .getErrorMessage();
 
-    Assertions.assertEquals("Unfortunately, we did not find any courses matching your chosen criteria.",actualErrorMessage,"The error message is not as expected.");
-}
+        Assertions.assertEquals("Unfortunately, we did not find any courses matching your chosen criteria.", actualErrorMessage, "The error message is not as expected.");
+    }
 }
