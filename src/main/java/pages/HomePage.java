@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -19,12 +18,8 @@ public class HomePage {
     }
 
     private By aqaPracticeButton = By.xpath("//div[@class='my-auto']");
-
-    private By selectOption = By.xpath("//div[text()='Select']");
-
     private By signOutButton = By.xpath("//div[contains(text(),'Sign Out')]");
     private By emailBlock = By.xpath("//div[contains(text(),'Sign Out')]");
-
 
     public HomePage hoverMenu() {
 
@@ -39,8 +34,7 @@ public class HomePage {
         return this;
     }
 
-
-    public <T> T clickOption(String menuOption){
+    public <T> T clickOption(String menuOption) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement selectOptionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='" + menuOption + "']")));
@@ -48,11 +42,11 @@ public class HomePage {
 
         switch (menuOption) {
             case "Select":
-                return (T) new SelectPage(driver); // Переход на SelectPage
+                return (T) new SelectPage(driver);
             case "Drag & Drop":
-                return (T) new DragAndDropPage(driver); // Переход на HomePage
-//            case "Actions, Alerts & Iframes":
-//                return new
+                return (T) new DragAndDropPage(driver);
+            case "Actions, Alerts & Iframes":
+                return (T) new ActionsPage(driver);
             default:
                 throw new IllegalArgumentException("Invalid menu option: " + menuOption);
         }
