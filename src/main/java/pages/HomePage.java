@@ -32,13 +32,15 @@ public class HomePage {
         WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(aqaPracticeButton));
 
         Actions actions = new Actions(driver);
-        actions.moveToElement(menuButton).perform();
+        actions.moveToElement(menuButton)
+                .pause(Duration.ofSeconds(2))
+                .perform();
 
         return this;
     }
 
 
-    public Object clickOption(String menuOption){
+    public <T> T clickOption(String menuOption){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement selectOptionButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='" + menuOption + "']")));
@@ -46,9 +48,9 @@ public class HomePage {
 
         switch (menuOption) {
             case "Select":
-                return new SelectPage(driver); // Переход на SelectPage
+                return (T) new SelectPage(driver); // Переход на SelectPage
             case "Drag & Drop":
-                return new DragAndDropPage(driver); // Переход на HomePage
+                return (T) new DragAndDropPage(driver); // Переход на HomePage
 //            case "Actions, Alerts & Iframes":
 //                return new
             default:

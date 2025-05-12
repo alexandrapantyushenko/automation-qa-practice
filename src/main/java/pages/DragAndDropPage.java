@@ -2,8 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import java.time.Duration;
 
 public class DragAndDropPage {
@@ -14,20 +14,39 @@ public class DragAndDropPage {
         this.driver = driver;
     }
 
-    private By dragEl1 = By.xpath("//span[@id='manual1']");
-    private By targetDragEl1 = By.xpath("//div[@id='target-manual1']");
 
-    Actions actions = new Actions(driver);
+    private By finishBtn = By.xpath("//button[@id='DragNDropPageFinishButton']");
+    private By dragAndDropMessage = By.xpath("//section[@class='relative']/div");
 
-    public DragAndDropPage DragAndDropMove(String manual1, String targetDragEl1) {
 
-        actions.pause(Duration.ofSeconds(5))
-                .dragAndDrop(driver.findElement(By.id("//span[@id=' " + manual1 + " ']")), driver.findElement(By.id("//div[@id='" + targetDragEl1 + " ']")))
-                .build().perform();
+    Actions actions;
+
+    public DragAndDropPage dragAndDropMove(String manualElementId, String targetElementId) {
+        actions = new Actions(driver);
+
+
+        By dragEl = By.xpath("//span[@id='" + manualElementId + "']");
+        By targetDragEl = By.xpath("//div[@id='" + targetElementId + "']");
+
+
+        WebElement source = driver.findElement(dragEl);
+        WebElement target = driver.findElement(targetDragEl);
+
+
+        actions.pause(Duration.ofSeconds(2))
+                .dragAndDrop(source, target)
+                .build()
+                .perform();
 
         return this;
     }
 
+    public DragAndDropPage clickFinishBtn() {
+        driver.findElement(finishBtn).click();
+        return this;
+    }
+
+    public String getDragAndDropMessage() {
+        return driver.findElement(dragAndDropMessage).getText();
+    }
 }
-
-

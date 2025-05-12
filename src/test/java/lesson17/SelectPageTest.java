@@ -5,6 +5,7 @@ import components.AndersenUrls;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import pages.SelectPage;
 import pages.SignInPage;
 
 public class SelectPageTest extends BaseTest {
@@ -19,7 +20,7 @@ public class SelectPageTest extends BaseTest {
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
                 .clickLogin()
                 .hoverMenu()
-                .clickOption("Select")
+                .<SelectPage>clickOption("Select")
                 .selectCountry("USA")
                 .selectLanguage("English")
                 .selectType("Testing")
