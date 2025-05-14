@@ -14,10 +14,8 @@ public class DragAndDropPage {
         this.driver = driver;
     }
 
-
     private By finishBtn = By.xpath("//button[@id='DragNDropPageFinishButton']");
     private By dragAndDropMessage = By.xpath("//section[@class='relative']/div");
-
 
     Actions actions;
 
