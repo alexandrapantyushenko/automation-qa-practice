@@ -49,7 +49,6 @@ public class RegistrationPage {
         setValue(emailLocator, email);
         setValue(passwordLocator, password);
         setValue(passwordConfirmationLocator, passwordConfirmation);
-
         return this;
     }
 
