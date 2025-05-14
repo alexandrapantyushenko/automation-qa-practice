@@ -16,7 +16,7 @@ import java.time.Duration;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class loginUsersTest extends BaseTestNGTest {
+public class LoginThreeUsersTest extends BaseTestNGTest {
 
     @DataProvider(name = "userCredentials")
     public Object[][] userCredentials() {

@@ -37,7 +37,7 @@ public class RegistrationTest extends BaseTest {
 
 
     @Test
-    void newRUserCanNotRegistrationWithMismatchedPassword() {
+    void newUserCanNotRegistrationWithMismatchedPassword() {
 
         new SignInPage(getDriver())
                 .navigateTo(AndersenUrls.LOGIN.getUrl())

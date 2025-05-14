@@ -14,10 +14,10 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class loginThreeUsersTest extends BaseTest {
+public class LoginUserTest extends BaseTest {
 
     @Test
-    void userLogin() {
+    public void userLoginTest() {
         WebDriver driver = getDriver();
 
         SignInPage signInPage = new SignInPage(driver)
@@ -37,5 +37,17 @@ public class loginThreeUsersTest extends BaseTest {
 
         WebElement signOutButton = homePage.getSignOutButton();
         assertTrue(signOutButton.isDisplayed(), "Sign out button is not visible");
+    }
+
+    @Test
+    public void loginUserWithNotValidCredentials(){
+        WebDriver driver = getDriver();
+
+        SignInPage signInPage = new SignInPage()
+                .navigateTo(AndersenUrls.LOGIN.getUrl())
+                .insertCredentials("emily.johnson57example.com", "EmilyPass321")
+                .
+
+
     }
 }

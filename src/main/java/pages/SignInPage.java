@@ -9,6 +9,7 @@ public class SignInPage {
     private By passwordLocator = By.xpath("//input[@name='password']");
     private By loginButtonLocator = By.xpath("//button[@type='submit']");
     private By registrationBtn = By.xpath("//span[text()='Registration']");
+    private By errorMessage = By.xpath("//div[@class='text-right relative']/span");
 
     private WebDriver driver;
 
@@ -36,6 +37,8 @@ public class SignInPage {
         driver.findElement(registrationBtn).click();
         return new RegistrationPage(driver);
     }
+
+
 }
 
 
