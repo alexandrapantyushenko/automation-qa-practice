@@ -1,4 +1,4 @@
-package Lesson16.grouping;
+package lesson16.grouping;
 
 import org.testng.annotations.Test;
 

@@ -5,6 +5,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegistrationPage {
 
     private WebDriver driver;
@@ -24,7 +27,7 @@ public class RegistrationPage {
     private By passwordLocator = By.xpath("//input[@name='password']");
     private By passwordConfirmationLocator = By.xpath("//input[@name='passwordConfirmation']");
     private By submitBtnLocator = By.xpath("//button[@type='submit']");
-
+    private By errorMessagesLocator = By.xpath("//div[@class='text-right relative']//span");
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
@@ -55,5 +58,16 @@ public class RegistrationPage {
     public SignInPage clickSubmit() {
         click(submitBtnLocator);
         return new SignInPage(driver);
+    }
+
+    public List<String> getAllErrorMessagesList(){
+
+        List<WebElement> errorElements = driver.findElements(errorMessagesLocator);
+        List<String> errorsText = new ArrayList<>();
+
+        for(WebElement el : errorElements){
+            errorsText.add(el.getText().trim());
+        }
+        return errorsText;
     }
 }

@@ -1,4 +1,4 @@
-package Lesson16.priority;
+package lesson16.priority;
 
 import org.testng.annotations.Test;
 

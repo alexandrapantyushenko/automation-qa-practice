@@ -1,4 +1,4 @@
-package Lesson15;
+package lesson15;
 
 import components.AndersenUrls;
 import org.junit.jupiter.api.Assertions;
@@ -7,9 +7,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.RegistrationPage;
 import pages.SignInPage;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -53,5 +55,27 @@ public class RegistrationTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Passwords must match')]")));
         Assertions.assertEquals("Passwords must match", errorMessage.getText());
+    }
+
+
+    @Test
+    void userRegistrationWithEmptyFields(){
+
+        RegistrationPage registrationPage = new SignInPage(getDriver())
+                .navigateTo(AndersenUrls.LOGIN.getUrl())
+                .clickRegistrationBtn()
+                .insertNewAccountData("",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "")
+                .clickSubmit();
+
+        List<String> errors = registrationPage.getAllErrorMessagesList();
+
+        Assertions.assertTrue(errors.contains("Required"));
+        Assertions.assertEquals(6,errors.size());
+
     }
 }

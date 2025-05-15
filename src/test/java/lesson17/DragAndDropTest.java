@@ -1,6 +1,6 @@
 package lesson17;
 
-import Lesson15.BaseTest;
+import lesson15.BaseTest;
 import components.AndersenUrls;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ public class DragAndDropTest extends BaseTest {
         String actualCongratulationsMessage = new SignInPage(driver)
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-                .clickLogin()
+                .loginSuccessfully()
                 .hoverMenu()
                 .<DragAndDropPage>clickOption("Drag & Drop")
                 .dragAndDropMove("manual1", "target-manual1")

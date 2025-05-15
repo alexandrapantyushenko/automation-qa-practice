@@ -1,6 +1,6 @@
 package lesson17;
 
-import Lesson15.BaseTest;
+import lesson15.BaseTest;
 import components.AndersenUrls;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +18,7 @@ public class AlertsTest extends BaseTest {
         ActionsPage actionsPage = new SignInPage(driver)
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-                .clickLogin()
+                .loginSuccessfully()
                 .hoverMenu()
                 .<ActionsPage>clickOption("Actions, Alerts & Iframes")
                 .switchToIframe();
