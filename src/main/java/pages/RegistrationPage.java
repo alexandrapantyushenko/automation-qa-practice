@@ -55,10 +55,18 @@ public class RegistrationPage {
         return this;
     }
 
-    public SignInPage clickSubmit() {
+    public <T> T clickSubmit(Class<T> expectedPage){
         click(submitBtnLocator);
-        return new SignInPage(driver);
-    }
+        try{
+            if(expectedPage.isInstance(this)){
+                return expectedPage.cast(this);
+            }
+            return expectedPage.getConstructor(WebDriver.class).newInstance(driver);
+        } catch (Exception e){
+            throw new RuntimeException("Ошибка создания страницы: " + expectedPage.getSimpleName(), e);
+        }
+   }
+
 
     public List<String> getAllErrorMessagesList(){
 

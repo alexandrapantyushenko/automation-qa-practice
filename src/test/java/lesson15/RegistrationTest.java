@@ -26,10 +26,10 @@ public class RegistrationTest extends BaseTest {
                 .insertNewAccountData("Emily",
                         "Johnson",
                         "08/22/1995",
-                        "emily.johnson55@example.com",
+                        "emily.johnson75@example.com",
                         "EmilyPass123!",
                         "EmilyPass123!")
-                .clickSubmit();
+                .clickSubmit(SignInPage.class);
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(AndersenUrls.LOGIN.getUrl()));
@@ -50,7 +50,7 @@ public class RegistrationTest extends BaseTest {
                         "emily.johnson93@example.com",
                         "EmilyPass123!",
                         "EmilyPass321!")
-                .clickSubmit();
+                .clickSubmit(RegistrationPage.class);
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Passwords must match')]")));
@@ -70,7 +70,7 @@ public class RegistrationTest extends BaseTest {
                         "",
                         "",
                         "")
-                .clickSubmit();
+                .clickSubmit(RegistrationPage.class);
 
         List<String> errors = registrationPage.getAllErrorMessagesList();
 
