@@ -35,6 +35,11 @@ public class SignInPage {
         return this;
     }
 
+    public String getPasswordInputType() {
+        WebElement passwordInput = driver.findElement(By.name("password"));
+        return passwordInput.getAttribute("type");
+    }
+
     public SignInPage insertCredentials(String email, String password) {
         driver.findElement(emailLocator).sendKeys(email);
         driver.findElement(passwordLocator).sendKeys(password);

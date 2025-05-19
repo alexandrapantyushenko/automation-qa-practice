@@ -65,4 +65,16 @@ public class LoginUserTest extends BaseTest {
 
         assertEquals("Email or password is not valid", errorPage.getErrorMessage());
     }
+
+    @Test
+    public void verifyPasswordInputIsHiddenTest() {
+        WebDriver driver = getDriver();
+
+        SignInPage signInPage = new SignInPage(driver)
+                .navigateTo(AndersenUrls.LOGIN.getUrl());
+
+        String inputType = signInPage.getPasswordInputType();
+
+        assertEquals("password", inputType, "Password input should have type='password' to hide the input");
+    }
 }
