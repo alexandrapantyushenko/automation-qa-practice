@@ -78,4 +78,40 @@ public class RegistrationTest extends BaseTest {
         Assertions.assertEquals(6,errors.size());
 
     }
+
+    @Test
+    void userRegistrationWithInvalidEmail(){
+
+        RegistrationPage registrationPage = new SignInPage(getDriver())
+                .navigateTo(AndersenUrls.LOGIN.getUrl())
+                .clickRegistrationBtn()
+                .insertNewAccountData("Emily",
+                        "Johnson",
+                        "08/22/1995",
+                        "emily.johnson93example.com",
+                        "EmilyPass123!",
+                        "EmilyPass123!")
+                .clickSubmit(RegistrationPage.class);
+
+        Assertions.assertEquals("Invalid email address", registrationPage.getErrorMessage("email"));
+        Assertions.assertFalse(registrationPage.getSubmitBtn().isEnabled());
+    }
+
+    @Test
+    void userRegistrationWithShortPassword(){
+
+        RegistrationPage registrationPage = new SignInPage(getDriver())
+                .navigateTo(AndersenUrls.LOGIN.getUrl())
+                .clickRegistrationBtn()
+                .insertNewAccountData("Emily",
+                        "Johnson",
+                        "08/22/1995",
+                        "emily.johnson93@example.com",
+                        "Emily",
+                        "Emily")
+                .clickSubmit(RegistrationPage.class);
+
+        Assertions.assertEquals("Minimum 8 characters", registrationPage.getErrorMessage("password"));
+        Assertions.assertFalse(registrationPage.getSubmitBtn().isEnabled());
+    }
 }

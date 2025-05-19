@@ -18,7 +18,7 @@ public class SelectPageTest extends BaseTest {
         String actualErrorMessage = new SignInPage(driver)
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-                .loginSuccessfully()
+                .clickLogin()
                 .hoverMenu()
                 .<SelectPage>clickOption("Select")
                 .selectCountry("USA")

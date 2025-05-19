@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class SignInPage {
@@ -39,10 +41,21 @@ public class SignInPage {
         return this;
     }
 
-    public HomePage loginSuccessfully(){
+    public HomePage clickLogin(){
         driver.findElement(loginButtonLocator).click();
-        wait.until(ExpectedConditions.urlToBe(AndersenUrls.ACCOUNT.getUrl()));
+        wait.until(ExpectedConditions.urlToBe(AndersenUrls.HOME.getUrl()));
         return new HomePage(driver);
+    }
+
+    public List<String> getErrorMessagesList(){
+
+        List<WebElement> errorElements = driver.findElements(errorMessageLocator);
+        List<String> errorsText = new ArrayList<>();
+
+        for(WebElement el : errorElements){
+            errorsText.add(el.getText().trim());
+        }
+        return errorsText;
     }
 
     public <T> T loginWithInvalidCredentials(Supplier<T> pageSupplier, ExpectedCondition<?> conditionToWait) {

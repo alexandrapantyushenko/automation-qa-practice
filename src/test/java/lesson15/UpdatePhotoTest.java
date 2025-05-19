@@ -17,33 +17,34 @@ import java.time.Duration;
 public class UpdatePhotoTest extends BaseTest {
 
 
-//    @Test
-//    void updateUserPhoto() {
-//        WebDriver driver = getDriver();
-//        {
-//            SignInPage signInPage = new SignInPage(driver)
-//                    .navigateTo(AndersenUrls.LOGIN.getUrl());
-//
-//            signInPage.insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-//                    .clickLogin();
-//
-//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//            wait.until(ExpectedConditions.urlToBe(AndersenUrls.ACCOUNT.getUrl()));
-//
-//            HomePage homePage = new HomePage(driver);
-//
-//            homePage.clickUploadButton();
-//
-//            WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='file']")));
-//
-//            File fileToUpload = new File("C:/Users/User/Pictures/unnamed.gif");
-//            fileInput.sendKeys(fileToUpload.getAbsolutePath());
-//
-//            WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Your photo has been updated']")));
-//            Assertions.assertEquals("Your photo has been updated", modal.getText());
-//
-//            WebElement closeModalButton = modal.findElement(By.xpath("//img[@alt='Close']"));
-//            closeModalButton.click();
-//        }
-//    }
+    @Test
+    void updateUserPhoto() {
+        WebDriver driver = getDriver();
+        {
+            SignInPage signInPage = new SignInPage(driver)
+                    .navigateTo(AndersenUrls.LOGIN.getUrl());
+
+            signInPage.insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
+                    .clickLogin();
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.urlToBe(AndersenUrls.HOME.getUrl()));
+
+            HomePage homePage = new HomePage(driver);
+
+            homePage.clickUploadButton();
+
+            WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='file']")));
+
+            File fileToUpload = new File("C:/Users/User/Pictures/unnamed.gif");
+            fileInput.sendKeys(fileToUpload.getAbsolutePath());
+
+            WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Your photo has been updated']")));
+            Assertions.assertEquals("Your photo has been updated", modal.getText());
+
+            WebElement closeModalButton = modal.findElement(By.xpath("//img[@alt='Close']"));
+            closeModalButton.click();
+        }
+    }
+
 }

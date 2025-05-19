@@ -18,7 +18,7 @@ public class AlertsTest extends BaseTest {
         ActionsPage actionsPage = new SignInPage(driver)
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-                .loginSuccessfully()
+                .clickLogin()
                 .hoverMenu()
                 .<ActionsPage>clickOption("Actions, Alerts & Iframes")
                 .switchToIframe();

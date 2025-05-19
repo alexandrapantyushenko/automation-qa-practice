@@ -29,8 +29,14 @@ public class RegistrationPage {
     private By submitBtnLocator = By.xpath("//button[@type='submit']");
     private By errorMessagesLocator = By.xpath("//div[@class='text-right relative']//span");
 
+    private By invalidEmailLocator = By.xpath("//input[@name='email']/ancestor::label/following-sibling::div//span");
+
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public WebElement getSubmitBtn() {
+        return driver.findElement(submitBtnLocator);
     }
 
     private void setValue(By locator, String value) {
@@ -67,7 +73,6 @@ public class RegistrationPage {
         }
    }
 
-
     public List<String> getAllErrorMessagesList(){
 
         List<WebElement> errorElements = driver.findElements(errorMessagesLocator);
@@ -78,4 +83,10 @@ public class RegistrationPage {
         }
         return errorsText;
     }
+
+    public String getErrorMessage(String fieldName) {
+        String xpath = "//input[@name='" + fieldName + "']/ancestor::label/following-sibling::div//span";
+        return driver.findElement(By.xpath(xpath)).getText();
+    }
+
 }

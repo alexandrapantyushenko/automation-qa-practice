@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import pages.HomePage;
 import pages.SignInPage;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,13 +21,33 @@ public class LoginUserTest extends BaseTest {
         HomePage homePage = new SignInPage(driver)
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-                .loginSuccessfully();
+                .clickLogin();
 
-       WebElement emailElement = homePage.getEmailElement("emily.johnson57@example.com");
+        assertEquals(driver.getCurrentUrl(), AndersenUrls.HOME.getUrl());
+
+        WebElement emailElement = homePage.getEmailElement("emily.johnson57@example.com");
         assertTrue(emailElement.isDisplayed(), "Email is not displayed on the home page");
 
-        WebElement signOutButton = homePage.getSignOutButton();
-        assertTrue(signOutButton.isDisplayed(), "Sign out button is not visible");
+    }
+
+    @Test
+    public void loginWithEmptyFieldsTest() {
+        WebDriver driver = getDriver();
+
+        SignInPage signInPage = new SignInPage(driver)
+                .navigateTo(AndersenUrls.LOGIN.getUrl())
+                .insertCredentials("", "");
+
+        SignInPage errorPage = signInPage.loginWithInvalidCredentials(
+                () -> signInPage,
+                signInPage.waitForErrorMessageCondition()
+        );
+
+        List<String> errors = errorPage.getErrorMessagesList();
+
+        assertEquals(2, errors.size(), "Expected 2 error messages: one for email and one for password");
+        assertTrue(errors.stream().allMatch(e -> e.equals("Required")), "All error messages should be 'Required'");
+
     }
 
     @Test

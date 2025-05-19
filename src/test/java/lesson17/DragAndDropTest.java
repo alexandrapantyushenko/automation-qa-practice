@@ -18,7 +18,7 @@ public class DragAndDropTest extends BaseTest {
         String actualCongratulationsMessage = new SignInPage(driver)
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-                .loginSuccessfully()
+                .clickLogin()
                 .hoverMenu()
                 .<DragAndDropPage>clickOption("Drag & Drop")
                 .dragAndDropMove("manual1", "target-manual1")
