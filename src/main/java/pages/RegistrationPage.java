@@ -5,6 +5,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegistrationPage {
 
     private WebDriver driver;
@@ -24,10 +27,16 @@ public class RegistrationPage {
     private By passwordLocator = By.xpath("//input[@name='password']");
     private By passwordConfirmationLocator = By.xpath("//input[@name='passwordConfirmation']");
     private By submitBtnLocator = By.xpath("//button[@type='submit']");
+    private By errorMessagesLocator = By.xpath("//div[@class='text-right relative']//span");
 
+    private By invalidEmailLocator = By.xpath("//input[@name='email']/ancestor::label/following-sibling::div//span");
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public WebElement getSubmitBtn() {
+        return driver.findElement(submitBtnLocator);
     }
 
     private void setValue(By locator, String value) {
@@ -49,12 +58,35 @@ public class RegistrationPage {
         setValue(emailLocator, email);
         setValue(passwordLocator, password);
         setValue(passwordConfirmationLocator, passwordConfirmation);
-
         return this;
     }
 
-    public SignInPage clickSubmit() {
+    public <T> T clickSubmit(Class<T> expectedPage){
         click(submitBtnLocator);
-        return new SignInPage(driver);
+        try{
+            if(expectedPage.isInstance(this)){
+                return expectedPage.cast(this);
+            }
+            return expectedPage.getConstructor(WebDriver.class).newInstance(driver);
+        } catch (Exception e){
+            throw new RuntimeException("Ошибка создания страницы: " + expectedPage.getSimpleName(), e);
+        }
+   }
+
+    public List<String> getAllErrorMessagesList(){
+
+        List<WebElement> errorElements = driver.findElements(errorMessagesLocator);
+        List<String> errorsText = new ArrayList<>();
+
+        for(WebElement el : errorElements){
+            errorsText.add(el.getText().trim());
+        }
+        return errorsText;
     }
+
+    public String getErrorMessage(String fieldName) {
+        String xpath = "//input[@name='" + fieldName + "']/ancestor::label/following-sibling::div//span";
+        return driver.findElement(By.xpath(xpath)).getText();
+    }
+
 }

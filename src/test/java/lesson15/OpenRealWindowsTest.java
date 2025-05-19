@@ -1,4 +1,4 @@
-package Lesson15;
+package lesson15;
 
 import components.Urls;
 import org.junit.jupiter.api.Test;

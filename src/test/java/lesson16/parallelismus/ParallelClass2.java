@@ -1,35 +1,35 @@
-package Lesson16.parallelismus;
+package lesson16.parallelismus;
 
 import org.testng.annotations.Test;
 
-public class ParallelClass1 {
+public class ParallelClass2 {
 
     @Test
-    public void parallel1() throws InterruptedException {
+    public void parallel6() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }
 
     @Test
-    public void parallel2() throws InterruptedException {
+    public void parallel7() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }
 
     @Test
-    public void parallel3() throws InterruptedException {
+    public void parallel8() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }
 
     @Test
-    public void parallel4() throws InterruptedException {
+    public void parallel9() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }
 
     @Test
-    public void parallel5() throws InterruptedException {
+    public void parallel10() throws InterruptedException {
         Thread.sleep(2000);
         assert true;
     }

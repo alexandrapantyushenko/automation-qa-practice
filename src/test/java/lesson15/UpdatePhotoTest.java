@@ -1,4 +1,4 @@
-package Lesson15;
+package lesson15;
 
 import components.AndersenUrls;
 import org.junit.jupiter.api.Assertions;
@@ -28,7 +28,7 @@ public class UpdatePhotoTest extends BaseTest {
                     .clickLogin();
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.urlToBe(AndersenUrls.ACCOUNT.getUrl()));
+            wait.until(ExpectedConditions.urlToBe(AndersenUrls.HOME.getUrl()));
 
             HomePage homePage = new HomePage(driver);
 
@@ -46,4 +46,5 @@ public class UpdatePhotoTest extends BaseTest {
             closeModalButton.click();
         }
     }
+
 }

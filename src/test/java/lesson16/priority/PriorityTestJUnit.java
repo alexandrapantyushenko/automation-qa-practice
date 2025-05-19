@@ -1,4 +1,4 @@
-package Lesson16.priority;
+package lesson16.priority;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.MethodOrderer;
