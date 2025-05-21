@@ -6,9 +6,10 @@
 
     <test name="AllTests">
         <packages>
-            <package name="lesson15"/>
-            <package name="lesson16"/>
-            <package name="lesson17"/>
+<!--            <package name="lesson15"/>-->
+<!--            <package name="lesson16"/>-->
+<!--            <package name="lesson17"/>-->
+            <package name="lesson20"/>
         </packages>
     </test>
 </suite>
