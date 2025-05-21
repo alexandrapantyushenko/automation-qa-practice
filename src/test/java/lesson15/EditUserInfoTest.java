@@ -2,12 +2,11 @@ package lesson15;
 
 import components.AndersenUrls;
 import lesson16.BaseTestNGTest;
-
 import org.openqa.selenium.WebDriver;
-import pages.HomePage;
-import pages.SignInPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.SignInPage;
 
 import java.util.List;
 import java.util.Map;

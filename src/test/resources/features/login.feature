@@ -14,7 +14,7 @@ Feature: User Login
     Given user is on the registration page
     When user inputs registration data:
       | First Name | Last Name | Date of Birth | Email                        | Password      | Confirm Password |
-      | Emily      | Johnson   | 08/22/1995    | emily.johnson668@example.com | EmilyPass123! | EmilyPass123!    |
+      | Emily      | Johnson   | 08/22/1995    | emily.johnson678@example.com | EmilyPass123! | EmilyPass123!    |
     And user submits the registration form
     Then user should be redirected to login page
 

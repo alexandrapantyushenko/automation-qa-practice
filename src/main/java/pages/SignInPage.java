@@ -4,7 +4,6 @@ import components.AndersenUrls;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -61,7 +60,7 @@ public class SignInPage {
     }
 
     @Step("Click Login button")
-    public HomePage clickLogin(){
+    public HomePage clickLogin() {
         logger.info("Clicking Login button");
         driver.findElement(loginButtonLocator).click();
         wait.until(ExpectedConditions.urlToBe(AndersenUrls.HOME.getUrl()));
@@ -70,12 +69,12 @@ public class SignInPage {
     }
 
     @Step("Get all error messages")
-    public List<String> getErrorMessagesList(){
+    public List<String> getErrorMessagesList() {
         logger.info("Retrieving all error messages");
         List<WebElement> errorElements = driver.findElements(errorMessageLocator);
         List<String> errorsText = new ArrayList<>();
 
-        for(WebElement el : errorElements){
+        for (WebElement el : errorElements) {
             String error = el.getText().trim();
             logger.debug("Error message found: {}", error);
             errorsText.add(error);
@@ -104,14 +103,14 @@ public class SignInPage {
     }
 
     @Step("Get error message text")
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         String message = driver.findElement(errorMessageLocator).getText();
         logger.info("Error message text: {}", message);
         return message;
     }
 
     @Step("Wait for visibility of error message")
-    public ExpectedCondition<WebElement> waitForErrorMessageCondition(){
+    public ExpectedCondition<WebElement> waitForErrorMessageCondition() {
         return ExpectedConditions.visibilityOfElementLocated(errorMessageLocator);
     }
 }

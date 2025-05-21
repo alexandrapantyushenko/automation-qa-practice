@@ -3,7 +3,6 @@ package pages;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -76,27 +75,27 @@ public class RegistrationPage {
     }
 
     @Step("Click Submit and navigate to {expectedPage}")
-    public <T> T clickSubmit(Class<T> expectedPage){
+    public <T> T clickSubmit(Class<T> expectedPage) {
         logger.info("Clicking Submit button, expecting page: {}", expectedPage.getSimpleName());
         click(submitBtnLocator);
         try {
-            if(expectedPage.isInstance(this)){
+            if (expectedPage.isInstance(this)) {
                 return expectedPage.cast(this);
             }
             return expectedPage.getConstructor(WebDriver.class).newInstance(driver);
-        } catch (Exception e){
+        } catch (Exception e) {
             logger.error("Error creating page instance: {}", expectedPage.getSimpleName(), e);
             throw new RuntimeException("Error creating page: " + expectedPage.getSimpleName(), e);
         }
     }
 
     @Step("Get all error messages list")
-    public List<String> getAllErrorMessagesList(){
+    public List<String> getAllErrorMessagesList() {
         logger.info("Getting all error messages");
         List<WebElement> errorElements = driver.findElements(errorMessagesLocator);
         List<String> errorsText = new ArrayList<>();
 
-        for(WebElement el : errorElements){
+        for (WebElement el : errorElements) {
             String text = el.getText().trim();
             logger.debug("Found error message: '{}'", text);
             errorsText.add(text);
