@@ -4,7 +4,7 @@
         <parameter name="email" value="emily.johnson57@example.com"/>
         <parameter name="password" value="EmilyPass123!"/>
         <classes>
-            <class name="Lesson16.parameters.loginWithParametersTest"/>
+            <class name="lesson16.parameters.loginWithParametersTest"/>
         </classes>
     </test>
 
@@ -12,7 +12,7 @@
         <parameter name="email" value="emily.johnson89@example.com"/>
         <parameter name="password" value="EmilyPass123!"/>
         <classes>
-            <class name="Lesson16.parameters.loginWithParametersTest"/>
+            <class name="lesson16.parameters.loginWithParametersTest"/>
         </classes>
     </test>
 
@@ -20,7 +20,7 @@
         <parameter name="email" value="emily.johnson55@example.com"/>
         <parameter name="password" value="EmilyPass123!"/>
         <classes>
-            <class name="Lesson16.parameters.loginWithParametersTest"/>
+            <class name="lesson16.parameters.loginWithParametersTest"/>
         </classes>
     </test>
 </suite>

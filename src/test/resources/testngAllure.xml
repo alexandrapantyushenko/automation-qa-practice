@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="AllTests Suite">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
+    <test name="AllTests">
+        <packages>
+            <package name="lesson15"/>
+            <package name="lesson16"/>
+            <package name="lesson17"/>
+            <package name="lesson20"/>
+        </packages>
+    </test>
+</suite>
