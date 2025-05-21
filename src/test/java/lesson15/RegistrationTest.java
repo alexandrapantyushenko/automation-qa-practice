@@ -1,25 +1,23 @@
 package lesson15;
 
 import components.AndersenUrls;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.RegistrationPage;
 import pages.SignInPage;
 
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class RegistrationTest extends BaseTest {
+public class RegistrationTest extends BaseTestNGTest {
 
     @Test
-    void newUserRegistration() {
-
+    public void newUserRegistration() {
         new SignInPage(getDriver())
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .clickRegistrationBtn()
@@ -34,13 +32,11 @@ public class RegistrationTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(AndersenUrls.LOGIN.getUrl()));
 
-        assertEquals(getDriver().getCurrentUrl(), AndersenUrls.LOGIN.getUrl());
+        Assert.assertEquals(getDriver().getCurrentUrl(), AndersenUrls.LOGIN.getUrl());
     }
 
-
     @Test
-    void newUserCanNotRegistrationWithMismatchedPassword() {
-
+    public void newUserCanNotRegistrationWithMismatchedPassword() {
         new SignInPage(getDriver())
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .clickRegistrationBtn()
@@ -54,13 +50,11 @@ public class RegistrationTest extends BaseTest {
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(), 'Passwords must match')]")));
-        Assertions.assertEquals("Passwords must match", errorMessage.getText());
+        Assert.assertEquals(errorMessage.getText(), "Passwords must match");
     }
 
-
     @Test
-    void userRegistrationWithEmptyFields(){
-
+    public void userRegistrationWithEmptyFields() {
         RegistrationPage registrationPage = new SignInPage(getDriver())
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .clickRegistrationBtn()
@@ -74,14 +68,12 @@ public class RegistrationTest extends BaseTest {
 
         List<String> errors = registrationPage.getAllErrorMessagesList();
 
-        Assertions.assertTrue(errors.contains("Required"));
-        Assertions.assertEquals(6,errors.size());
-
+        Assert.assertTrue(errors.contains("Required"));
+        Assert.assertEquals(errors.size(), 6);
     }
 
     @Test
-    void userRegistrationWithInvalidEmail(){
-
+    public void userRegistrationWithInvalidEmail() {
         RegistrationPage registrationPage = new SignInPage(getDriver())
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .clickRegistrationBtn()
@@ -93,13 +85,12 @@ public class RegistrationTest extends BaseTest {
                         "EmilyPass123!")
                 .clickSubmit(RegistrationPage.class);
 
-        Assertions.assertEquals("Invalid email address", registrationPage.getErrorMessage("email"));
-        Assertions.assertFalse(registrationPage.getSubmitBtn().isEnabled());
+        Assert.assertEquals(registrationPage.getErrorMessage("email"), "Invalid email address");
+        Assert.assertFalse(registrationPage.getSubmitBtn().isEnabled());
     }
 
     @Test
-    void userRegistrationWithShortPassword(){
-
+    public void userRegistrationWithShortPassword() {
         RegistrationPage registrationPage = new SignInPage(getDriver())
                 .navigateTo(AndersenUrls.LOGIN.getUrl())
                 .clickRegistrationBtn()
@@ -111,7 +102,7 @@ public class RegistrationTest extends BaseTest {
                         "Emily")
                 .clickSubmit(RegistrationPage.class);
 
-        Assertions.assertEquals("Minimum 8 characters", registrationPage.getErrorMessage("password"));
-        Assertions.assertFalse(registrationPage.getSubmitBtn().isEnabled());
+        Assert.assertEquals(registrationPage.getErrorMessage("password"), "Minimum 8 characters");
+        Assert.assertFalse(registrationPage.getSubmitBtn().isEnabled());
     }
 }

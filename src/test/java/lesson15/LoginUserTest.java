@@ -1,18 +1,17 @@
 package lesson15;
 
 import components.AndersenUrls;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SignInPage;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-public class LoginUserTest extends BaseTest {
+public class LoginUserTest extends BaseTestNGTest {
 
     @Test
     public void userLoginTest() {
@@ -23,11 +22,10 @@ public class LoginUserTest extends BaseTest {
                 .insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
                 .clickLogin();
 
-        assertEquals(driver.getCurrentUrl(), AndersenUrls.HOME.getUrl());
+        Assert.assertEquals(driver.getCurrentUrl(), AndersenUrls.HOME.getUrl());
 
         WebElement emailElement = homePage.getEmailElement("emily.johnson57@example.com");
-        assertTrue(emailElement.isDisplayed(), "Email is not displayed on the home page");
-
+        Assert.assertTrue(emailElement.isDisplayed(), "Email is not displayed on the home page");
     }
 
     @Test
@@ -45,9 +43,8 @@ public class LoginUserTest extends BaseTest {
 
         List<String> errors = errorPage.getErrorMessagesList();
 
-        assertEquals(2, errors.size(), "Expected 2 error messages: one for email and one for password");
-        assertTrue(errors.stream().allMatch(e -> e.equals("Required")), "All error messages should be 'Required'");
-
+        Assert.assertEquals(errors.size(), 2, "Expected 2 error messages: one for email and one for password");
+        Assert.assertTrue(errors.stream().allMatch(e -> e.equals("Required")), "All error messages should be 'Required'");
     }
 
     @Test
@@ -63,7 +60,7 @@ public class LoginUserTest extends BaseTest {
                 signInPage.waitForErrorMessageCondition()
         );
 
-        assertEquals("Email or password is not valid", errorPage.getErrorMessage());
+        Assert.assertEquals(errorPage.getErrorMessage(), "Email or password is not valid");
     }
 
     @Test
@@ -75,6 +72,6 @@ public class LoginUserTest extends BaseTest {
 
         String inputType = signInPage.getPasswordInputType();
 
-        assertEquals("password", inputType, "Password input should have type='password' to hide the input");
+        Assert.assertEquals(inputType, "password", "Password input should have type='password' to hide the input");
     }
 }

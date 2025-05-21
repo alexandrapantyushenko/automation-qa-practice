@@ -1,15 +1,14 @@
 package lesson17;
 
-import lesson15.BaseTest;
 import components.AndersenUrls;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.WebDriver;
-
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.ActionsPage;
 import pages.SignInPage;
 
-public class AlertsTest extends BaseTest {
+public class AlertsTest extends BaseTestNGTest {
 
     @Test
     public void alertsTest() {
@@ -31,6 +30,5 @@ public class AlertsTest extends BaseTest {
 
         actionsPage.handleThirdAlertWithInput("Test");
         Assert.assertEquals(actionsPage.getResultMessage(), "Your course application has been cancelled. Reason: Test");
-
     }
 }

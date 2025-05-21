@@ -1,50 +1,48 @@
 package lesson15;
 
 import components.AndersenUrls;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SignInPage;
 
 import java.io.File;
 import java.time.Duration;
 
-public class UpdatePhotoTest extends BaseTest {
-
+public class UpdatePhotoTest extends BaseTestNGTest {
 
     @Test
-    void updateUserPhoto() {
+    public void updateUserPhoto() {
         WebDriver driver = getDriver();
-        {
-            SignInPage signInPage = new SignInPage(driver)
-                    .navigateTo(AndersenUrls.LOGIN.getUrl());
 
-            signInPage.insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
-                    .clickLogin();
+        SignInPage signInPage = new SignInPage(driver)
+                .navigateTo(AndersenUrls.LOGIN.getUrl());
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.urlToBe(AndersenUrls.HOME.getUrl()));
+        signInPage.insertCredentials("emily.johnson57@example.com", "EmilyPass123!")
+                .clickLogin();
 
-            HomePage homePage = new HomePage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlToBe(AndersenUrls.HOME.getUrl()));
 
-            homePage.clickUploadButton();
+        HomePage homePage = new HomePage(driver);
 
-            WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='file']")));
+        homePage.clickUploadButton();
 
-            File fileToUpload = new File("C:/Users/User/Pictures/unnamed.gif");
-            fileInput.sendKeys(fileToUpload.getAbsolutePath());
+        WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='file']")));
 
-            WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Your photo has been updated']")));
-            Assertions.assertEquals("Your photo has been updated", modal.getText());
+        File fileToUpload = new File("C:/Users/User/Pictures/unnamed.gif");
+        fileInput.sendKeys(fileToUpload.getAbsolutePath());
 
-            WebElement closeModalButton = modal.findElement(By.xpath("//img[@alt='Close']"));
-            closeModalButton.click();
-        }
+        WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Your photo has been updated']")));
+        Assert.assertEquals(modal.getText(), "Your photo has been updated");
+
+        WebElement closeModalButton = modal.findElement(By.xpath("//img[@alt='Close']"));
+        closeModalButton.click();
     }
-
 }

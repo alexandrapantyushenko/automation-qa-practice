@@ -1,14 +1,14 @@
 package lesson17;
 
-import lesson15.BaseTest;
 import components.AndersenUrls;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.SelectPage;
 import pages.SignInPage;
 
-public class SelectPageTest extends BaseTest {
+public class SelectPageTest extends BaseTestNGTest {
 
     @Test
     public void testSelectCourseAndSubmit() {
@@ -30,6 +30,8 @@ public class SelectPageTest extends BaseTest {
                 .clickSearchButton()
                 .getErrorMessage();
 
-        Assertions.assertEquals("Unfortunately, we did not find any courses matching your chosen criteria.", actualErrorMessage, "The error message is not as expected.");
+        Assert.assertEquals(actualErrorMessage,
+                "Unfortunately, we did not find any courses matching your chosen criteria.",
+                "The error message is not as expected.");
     }
 }

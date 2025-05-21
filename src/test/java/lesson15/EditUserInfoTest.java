@@ -1,18 +1,18 @@
 package lesson15;
 
 import components.AndersenUrls;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
+
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.SignInPage;
-
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class EditUserInfoTest extends BaseTest {
+public class EditUserInfoTest extends BaseTestNGTest {
 
     @Test
     public void checkUserInfoTest() {
@@ -24,10 +24,10 @@ public class EditUserInfoTest extends BaseTest {
                 .clickLogin()
                 .clickEditButton();
 
-        assertEquals(homePage.getFieldValue("firstName"), "Emily", "First name is incorrect");
-        assertEquals(homePage.getFieldValue("lastName"), "Johnson", "Last name is incorrect");
-        assertEquals(homePage.getFieldValue("email"), "emily.johnson89@example.com", "Email is incorrect");
-        assertEquals(homePage.getFieldValue("dateOfBirth"), "22/08/1995", "Date of Birth is incorrect");
+        Assert.assertEquals(homePage.getFieldValue("firstName"), "Emily", "First name is incorrect");
+        Assert.assertEquals(homePage.getFieldValue("lastName"), "Johnson", "Last name is incorrect");
+        Assert.assertEquals(homePage.getFieldValue("email"), "emily.johnson57@example.com", "Email is incorrect");
+        Assert.assertEquals(homePage.getFieldValue("dateOfBirth"), "22/08/1995", "Date of Birth is incorrect");
     }
 
     @Test
@@ -53,15 +53,7 @@ public class EditUserInfoTest extends BaseTest {
         Map<String, String> actualData = homePage.readProfileFields(List.of("firstName", "lastName", "dateOfBirth"));
 
         for (String key : newData.keySet()) {
-            assertEquals(actualData.get(key), newData.get(key), key + " was not updated correctly");
+            Assert.assertEquals(actualData.get(key), newData.get(key), key + " was not updated correctly");
         }
     }
 }
-
-
-
-
-
-
-
-

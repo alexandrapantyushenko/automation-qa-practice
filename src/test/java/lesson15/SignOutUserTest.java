@@ -1,12 +1,13 @@
 package lesson15;
 
 import components.AndersenUrls;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.SignInPage;
 
-public class SignOutUserTest extends BaseTest{
+public class SignOutUserTest extends BaseTestNGTest {
 
     @Test
     public void userLogOutTest() {
@@ -18,7 +19,6 @@ public class SignOutUserTest extends BaseTest{
                 .clickLogin()
                 .clickSignOutButton();
 
-        Assertions.assertEquals(AndersenUrls.LOGIN.getUrl(), driver.getCurrentUrl());
-
+        Assert.assertEquals(driver.getCurrentUrl(), AndersenUrls.LOGIN.getUrl());
     }
 }

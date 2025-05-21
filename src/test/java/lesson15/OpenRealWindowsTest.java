@@ -1,16 +1,17 @@
 package lesson15;
 
 import components.Urls;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
-public class OpenRealWindowsTest extends BaseTest {
+public class OpenRealWindowsTest extends BaseTestNGTest {
 
     @Test
-    void openPagesAndHandleZoo() {
+    public void openPagesAndHandleZoo() {
         WebDriver driver = getDriver();
 
         driver.get(Urls.PAGE1.getUrl());

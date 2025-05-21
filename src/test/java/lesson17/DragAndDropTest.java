@@ -1,14 +1,14 @@
 package lesson17;
 
-import lesson15.BaseTest;
 import components.AndersenUrls;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import lesson16.BaseTestNGTest;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.DragAndDropPage;
 import pages.SignInPage;
 
-public class DragAndDropTest extends BaseTest {
+public class DragAndDropTest extends BaseTestNGTest {
 
     @Test
     public void dragAndDropTest() {
@@ -27,8 +27,6 @@ public class DragAndDropTest extends BaseTest {
                 .dragAndDropMove("auto2", "target-auto2")
                 .getDragAndDropMessage();
 
-        Assertions.assertEquals("Congratulations! Let's test for the best!", actualCongratulationsMessage, "The congratulations message is not as expected.");
-
-
+        Assert.assertEquals(actualCongratulationsMessage, "Congratulations! Let's test for the best!", "The congratulations message is not as expected.");
     }
 }
