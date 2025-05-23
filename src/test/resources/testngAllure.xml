@@ -10,6 +10,7 @@
             <package name="lesson16"/>
             <package name="lesson17"/>
             <package name="lesson20"/>
+            <package name="lesson21"/>
         </packages>
     </test>
 </suite>

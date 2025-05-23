@@ -133,6 +133,7 @@
             <version>8.5.1</version>
         </dependency>
 
+
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-java-commons</artifactId>
