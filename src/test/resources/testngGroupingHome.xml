@@ -7,7 +7,7 @@
             </run>
         </groups>
         <classes>
-            <class name="Lesson16.grouping.Groups"/>
+            <class name="lesson16.grouping.Groups"/>
         </classes>
     </test>
 
@@ -18,7 +18,7 @@
             </run>
         </groups>
         <classes>
-            <class name="Lesson16.grouping.Groups"/>
+            <class name="lesson16.grouping.Groups"/>
         </classes>
     </test>
 </suite>
